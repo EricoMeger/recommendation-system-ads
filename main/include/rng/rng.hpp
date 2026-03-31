@@ -1,10 +1,11 @@
 #pragma once
 
 class RNG {
+protected:
+    int seed;
+    
 public:
-    explicit RNG(int seed) {
-        this->seed = seed;
-    }
+    explicit RNG(int seed) : seed(seed) {}
 
     virtual int generate() = 0; // = 0 vai forçar que classe filha implemente esse método
     // int talvez n seja uma boa tipagem, talvez considerar uint32? pesquisar
@@ -26,7 +27,4 @@ public:
     }
 
     virtual ~RNG() = default;
-
-protected:
-    int seed;
 };
