@@ -1,5 +1,5 @@
 #pragma once
-
+#include <iostream>
 class RNG {
 protected:
     int seed;
@@ -13,14 +13,8 @@ public:
 
     virtual std::string getName() const = 0;
 
-    // essas duas n vao ser virtuais pq a implementação vai ser a mesma independente do gerador 
-    int uniform_int_distribution(int min, int max) {
-        return generate(); //pesquisar como retornar essa distribuicao, pensando em geracao de rating talvez usar um tipo de distribuicao q n seja uniforme
-    }
-
-    double uniform_real_distribution() {
-        return generate(); // ditto
-    }
+    virtual int uniform_int_distribution() = 0; //pesquisar como retornar essa distribuicao, pensando em geracao de rating talvez usar um tipo de distribuicao q n seja uniforme
+    virtual double uniform_real_distribution() = 0; //ditto
 
     int getSeed() const {
         return seed;
