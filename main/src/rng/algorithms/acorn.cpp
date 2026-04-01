@@ -1,4 +1,4 @@
-#include "/main/include/rng/algorithms/acorn.hpp"
+#include "../../include/rng/algorithms/acorn.hpp"
 
 Acorn::Acorn(int seed) : RNG(seed) {}
 

@@ -1,5 +1,5 @@
 #pragma once
-#include "/main/include/rng/rng.hpp"
+#include "../rng.hpp"
 
 class Acorn : public RNG {
 private:
