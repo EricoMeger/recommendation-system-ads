@@ -9,7 +9,7 @@ private:
 public:
     explicit Xorshift(int seed);
 
-    int generate() override;
+    uint64_t generate() override;
     void reset() override;
     std::string getName() const override;
 };
