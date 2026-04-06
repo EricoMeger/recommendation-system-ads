@@ -1,20 +1,30 @@
 #pragma once
 #include <iostream>
+#include <cstdint>
+#include <string>
 class RNG {
 protected:
     int seed;
-    
+
 public:
     explicit RNG(int seed) : seed(seed) {}
 
-    virtual int generate() = 0; // = 0 vai forçar que classe filha implemente esse método
-    // int talvez n seja uma boa tipagem, talvez considerar uint32? pesquisar
-    virtual void reset() = 0; // resetar a seed sem precisar criar outro objeto (pensando nos tests)
-
+    virtual uint64_t generate() = 0;
+    virtual void reset() = 0;
     virtual std::string getName() const = 0;
 
-    virtual int uniform_int_distribution() = 0; //pesquisar como retornar essa distribuicao, pensando em geracao de rating talvez usar um tipo de distribuicao q n seja uniforme
-    virtual double uniform_real_distribution() = 0; //ditto
+    virtual int nextInt(int min, int max) { 
+        return min + (generate() % (max - min + 1));
+        // ao inves de ser so uma distribuicao uniforme, podemos considerar o teorema do limite central
+        // parece ser fácil de implementar e gera numeros mais "factiveis", no sentido
+        // q seria possivel gerar mais notas "médias" (2,3,4, pensando de 1 a 5) para um item, alem de ser possivel
+        // "parametrizar" isso pra ele gerar notas mais altas ou mais baixas 
+        // como o trabalho é pra ser algo mais simples mesmo acho q uniforme ta de boas
+    }
+
+    virtual double nextDouble() {
+        return generate() / (double)UINT64_MAX;
+    }
 
     int getSeed() const {
         return seed;
