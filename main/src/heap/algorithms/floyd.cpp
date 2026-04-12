@@ -3,12 +3,12 @@
 #include <stdexcept>
 #include <utility>
 
-Floyd::Floyd(const std::vector<uint64_t>& values)
+Floyd::Floyd(const std::vector<ItemScore>& values)
 {
 	buildHeap(values);
 }
 
-void Floyd::buildHeap(const std::vector<uint64_t>& values)
+void Floyd::buildHeap(const std::vector<ItemScore>& values)
 {
 	data = values;
 
@@ -17,7 +17,7 @@ void Floyd::buildHeap(const std::vector<uint64_t>& values)
 	}
 }
 
-void Floyd::push(uint64_t value)
+void Floyd::push(ItemScore value)
 {
 	data.push_back(value);
 	heapifyUp(data.size() - 1);
@@ -37,7 +37,7 @@ void Floyd::pop()
 	}
 }
 
-uint64_t Floyd::top() const
+ItemScore Floyd::top() const
 {
 	if (data.empty()) {
 		throw std::out_of_range("Heap is empty");
@@ -61,40 +61,36 @@ std::string Floyd::getName() const
 	return "Floyd";
 }
 
-void Floyd::heapifyUp(size_t index)
-{
-	while (index > 0) {
-		size_t parent = (index - 1) / 2;
-
-		if (data[parent] >= data[index]) {
-			break;
-		}
-
-		std::swap(data[parent], data[index]);
-		index = parent;
-	}
+void Floyd::heapifyUp(size_t index) {
+    while (index > 0) {
+        size_t parent = (index - 1) / 2;
+        if (data[parent] >= data[index]) break;  
+        std::swap(data[parent], data[index]);
+        index = parent;
+    }
 }
 
-void Floyd::heapifyDown(size_t index)
-{
-	while (true) {
-		size_t left = 2 * index + 1;
-		size_t right = left + 1;
-		size_t largest = index;
+void Floyd::heapifyDown(size_t index) {
+    while (true) {
+        size_t left    = 2 * index + 1;
+        size_t right   = left + 1;
+        size_t largest = index;
 
-		if (left < data.size() && data[left] > data[largest]) {
-			largest = left;
-		}
+        if (left  < data.size() && data[left]  > data[largest]) largest = left;
+        if (right < data.size() && data[right] > data[largest]) largest = right;
 
-		if (right < data.size() && data[right] > data[largest]) {
-			largest = right;
-		}
+        if (largest == index) break;
+        std::swap(data[index], data[largest]);
+        index = largest;
+    }
+}
 
-		if (largest == index) {
-			break;
-		}
-
-		std::swap(data[index], data[largest]);
-		index = largest;
-	}
+std::vector<ItemScore> Floyd::topK(int k) {
+    Floyd copy = *this;
+    std::vector<ItemScore> result;
+    for (int i = 0; i < k && !copy.empty(); i++) {
+        result.push_back(copy.top());
+        copy.pop();
+    }
+    return result;
 }
