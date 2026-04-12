@@ -1,5 +1,7 @@
 #include "../../../include/hash/algorithms/murmurhash.hpp"
 
+#include <cstring>
+
 namespace {
 static inline uint32_t murmur_32_scramble(uint32_t k, int8_t r)
 {
@@ -11,7 +13,7 @@ MurmurHash::MurmurHash(uint32_t seed) : seed(seed) {}
 
 uint64_t MurmurHash::hash(const std::string& input)
 {
-	return murmur3_32(reinterpret_cast<const uint8_t*>(input.data()), input.size(), seed);
+	return murmur3_32(input.data(), input.size(), seed);
 }
 
 std::string MurmurHash::getName() const
@@ -19,20 +21,19 @@ std::string MurmurHash::getName() const
 	return "MurmurHash";
 }
 
-uint32_t murmur3_32(const uint8_t* key, size_t len, uint32_t seed)
+uint32_t murmur3_32(const void* key, size_t len, uint32_t seed)
 {
-	const uint8_t* data = key;
+	const uint8_t* data = static_cast<const uint8_t*>(key);
 	const int nblocks = static_cast<int>(len / 4);
 	uint32_t h1 = seed;
 
 	const uint32_t c1 = 0xcc9e2d51;
 	const uint32_t c2 = 0x1b873593;
 
-	const uint32_t* blocks = reinterpret_cast<const uint32_t*>(data);
-
 	for (int i = 0; i < nblocks; i++)
 	{
-		uint32_t k1 = blocks[i];
+		uint32_t k1 = 0;
+		std::memcpy(&k1, data + (i * 4), sizeof(uint32_t));
 
 		k1 *= c1;
 		k1 = murmur_32_scramble(k1, 15);
