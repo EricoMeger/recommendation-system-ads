@@ -1,21 +1,18 @@
 #include "../../../include/hash/algorithms/murmurhash.hpp"
 
 namespace {
-static inline uint32_t murmur_32_scramble(uint32_t k, int8_t r)
-{
+static inline uint32_t murmur_32_scramble(uint32_t k, int8_t r) {
 	return (k << r) | (k >> (32 - r));
 }
 }
 
 MurmurHash::MurmurHash(uint32_t seed) : seed(seed) {}
 
-uint64_t MurmurHash::hash(const std::string& input)
-{
+uint64_t MurmurHash::hash(const std::string& input) {
 	return murmur3_32(reinterpret_cast<const uint8_t*>(input.data()), input.size(), seed);
 }
 
-uint32_t murmur3_32(const uint8_t* key, size_t len, uint32_t seed)
-{
+uint32_t murmur3_32(const uint8_t* key, size_t len, uint32_t seed) {
 	const uint8_t* data = key;
 	const int nblocks = static_cast<int>(len / 4);
 	uint32_t h1 = seed;
