@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../hash.hpp"
+#include "../hash_function.hpp"
 #include <cstddef>
 #include <cstdint>
 
-class MurmurHash : public Hash {
+class MurmurHash : public HashFunction {
 public:
 	explicit MurmurHash(uint32_t seed = 0);
 
