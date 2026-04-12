@@ -6,7 +6,10 @@
 class FNV1a : public HashFunction {
 public:
     uint64_t hash(const std::string& input) override;
-    std::string getName() const override;
+
+    std::string getName() const override {
+        return "FNV-1a";
+    }
 
 private:
    /* from wikipedia

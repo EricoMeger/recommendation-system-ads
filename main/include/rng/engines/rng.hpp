@@ -13,8 +13,9 @@ public:
     virtual void reset() = 0;
     virtual std::string getName() const = 0;
 
-    virtual int nextInt(int min, int max) { 
-        return min + (generate() % (max - min + 1));
+    virtual int nextInt() { 
+        return generate();
+        // return min + (generate() % (max - min + 1));
         // ao inves de ser so uma distribuicao uniforme, podemos considerar o teorema do limite central
         // parece ser fácil de implementar e gera numeros mais "factiveis", no sentido
         // q seria possivel gerar mais notas "médias" (2,3,4, pensando de 1 a 5) para um item, alem de ser possivel

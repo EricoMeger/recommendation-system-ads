@@ -11,5 +11,8 @@ public:
 
     uint64_t generate() override;
     void reset() override;
-    std::string getName() const override;
+    
+    std::string getName() const override {
+        return "XORSHIFT";
+    }
 };

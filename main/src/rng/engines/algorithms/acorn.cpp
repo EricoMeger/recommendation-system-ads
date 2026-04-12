@@ -1,13 +1,9 @@
-#include "../../../include/rng/algorithms/acorn.hpp"
+#include "../../../include/rng/engines/algorithms/acorn.hpp"
 #include <cmath>
 
 ACORN::ACORN(int seed, int order) : RNG(seed), order(order), modulus(1ULL << 60), state(order + 1, 0) {
     init(seed);
     initialState = state;
-}
-
-std::string ACORN::getName() const {
-    return "ACORN";
 }
 
 void ACORN::init(int seed) {

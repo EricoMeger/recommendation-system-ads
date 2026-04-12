@@ -14,11 +14,6 @@ uint64_t MurmurHash::hash(const std::string& input)
 	return murmur3_32(reinterpret_cast<const uint8_t*>(input.data()), input.size(), seed);
 }
 
-std::string MurmurHash::getName() const
-{
-	return "MurmurHash";
-}
-
 uint32_t murmur3_32(const uint8_t* key, size_t len, uint32_t seed)
 {
 	const uint8_t* data = key;

@@ -7,7 +7,10 @@ public:
 
     uint64_t generate() override;
     void reset() override;
-    std::string getName() const override;
+    
+    std::string getName() const override {
+        return "ACORN";
+    }
 
     // sobrescreve pq o cap do ACORN é o modulus (2^60) e não o uint max
     double nextDouble() override {
