@@ -1,4 +1,4 @@
-#include "hash_table.hpp"
+#include "../../include/hash/hash_table.hpp"
 
 HashTable::HashTable(int tableSize, HashFunction* hashFunc)
     : tableSize(tableSize), elementCount(0), collisions(0),

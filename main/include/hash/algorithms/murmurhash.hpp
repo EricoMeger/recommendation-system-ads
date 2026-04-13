@@ -9,7 +9,10 @@ public:
 	explicit MurmurHash(uint32_t seed = 0);
 
 	uint64_t hash(const std::string& input) override;
-	std::string getName() const override;
+
+	std::string getName() const override {
+		return "MurmurHash";
+	}
 
 private:
 	uint32_t seed;

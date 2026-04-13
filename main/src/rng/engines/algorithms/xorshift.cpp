@@ -1,4 +1,4 @@
-#include "../../../include/rng/algorithms/xorshift.hpp"
+#include "rng/engines/algorithms/xorshift.hpp"
 
 Xorshift::Xorshift(int seed) : RNG(seed), initialSeed(seed) {}
 
@@ -13,8 +13,4 @@ uint64_t Xorshift::generate() {
 
 void Xorshift::reset() {
     seed = initialSeed;
-}
-
-std::string Xorshift::getName() const {
-    return "XORSHIFT";
 }
