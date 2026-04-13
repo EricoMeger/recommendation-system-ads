@@ -10,8 +10,14 @@ static inline uint32_t murmur_32_scramble(uint32_t k, int8_t r) {
 
 MurmurHash::MurmurHash(uint32_t seed) : seed(seed) {}
 
-uint64_t MurmurHash::hash(const std::string& input) {
-	return murmur3_32(reinterpret_cast<const uint8_t*>(input.data()), input.size(), seed);
+uint64_t MurmurHash::hash(const std::string& input)
+{
+	return murmur3_32(input.data(), input.size(), seed);
+}
+
+uint32_t murmur3_32(const void* key, size_t len, uint32_t seed)
+{
+	return "MurmurHash";
 }
 
 uint32_t murmur3_32(const void* key, size_t len, uint32_t seed)
