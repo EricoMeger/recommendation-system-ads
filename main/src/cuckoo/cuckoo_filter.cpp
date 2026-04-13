@@ -1,4 +1,4 @@
-#include "../../include/cuckooFilter/cuckooFilter.hpp"
+#include "../../include/cuckoo/cuckoo_filter.hpp"
 
 #include <algorithm>
 #include <stdexcept>
@@ -25,7 +25,7 @@ size_t sanitizeSize(size_t value)
 }
 
 CuckooFilter::CuckooFilter(HashFunction* hashIndex,
-                                                     HashFunction* hashFingerprint,
+                           HashFunction* hashFingerprint,
                            size_t numBuckets,
                            size_t bucketSize,
                            uint8_t fingerprintBits,

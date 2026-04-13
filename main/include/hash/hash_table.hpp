@@ -26,11 +26,11 @@ public:
     bool hasRated(int userId, int itemId);
 
     // pra gerar as metricas dps
-    int getCollisions() const  { return collisions; }
+    int getCollisions() const { return collisions; }
     // seria interessante fazer o rehashing, nao parece ser tao complicado
     // por agora vamos citar de trabalhos futuros, se der tempo implementamos
     float getLoadFactor() const { return (float)elementCount / tableSize; }
-    int getTableSize() const   { return tableSize; }
+    int getTableSize() const { return tableSize; }
     int getElementCount() const { return elementCount; }
 
 private:
