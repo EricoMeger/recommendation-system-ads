@@ -1,7 +1,18 @@
 #pragma once
 
+#include "../hash_function.hpp"
 #include <cstddef>
 #include <cstdint>
 
-static inline uint32_t murmur_32_scramble(uint32_t k);
-uint32_t murmur3_32(const uint8_t* key, size_t len, uint32_t seed);
+class MurmurHash : public HashFunction {
+public:
+	explicit MurmurHash(uint32_t seed = 0);
+
+	uint64_t hash(const std::string& input) override;
+	std::string getName() const override;
+
+private:
+	uint32_t seed;
+};
+
+uint32_t murmur3_32(const void* key, size_t len, uint32_t seed);
