@@ -1,4 +1,4 @@
-#include "rng/engines/algorithms/xorshift.hpp"
+#include "../../../../include/rng/engines/algorithms/xorshift.hpp"
 
 Xorshift::Xorshift(int seed) : RNG(seed), initialSeed(seed) {}
 

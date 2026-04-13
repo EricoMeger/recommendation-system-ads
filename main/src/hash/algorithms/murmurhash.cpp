@@ -15,10 +15,10 @@ uint64_t MurmurHash::hash(const std::string& input)
 	return murmur3_32(input.data(), input.size(), seed);
 }
 
-uint32_t murmur3_32(const void* key, size_t len, uint32_t seed)
-{
-	return "MurmurHash";
-}
+// uint32_t murmur3_32(const void* key, size_t len, uint32_t seed)
+// {
+// 	return "MurmurHash";
+// }
 
 uint32_t murmur3_32(const void* key, size_t len, uint32_t seed)
 {
