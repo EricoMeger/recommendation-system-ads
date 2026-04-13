@@ -21,10 +21,10 @@ $(TARGET): $(SRC)
 	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET)
 
 run: $(TARGET)
-	./$(TARGET) --seed 42 --users 100 --items 50 --ratings 1000 --topk 5
+	./$(TARGET) --seed 67 --users 100 --items 50 --ratings 1000 --topk 5
 
 run-cuckoo: $(TARGET)
-	./$(TARGET) --seed 42 --users 100 --items 50 --ratings 1000 --topk 5 --cuckoo
+	./$(TARGET) --seed 67 --users 100 --items 50 --ratings 1000 --topk 5 --cuckoo
 
 clean:
 	rm -f $(TARGET)

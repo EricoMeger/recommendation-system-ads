@@ -1,10 +1,10 @@
 #pragma once
 #include "../recommender.hpp"
 #include "../rng/engines/rng.hpp"
-#include "hash/hash_function.hpp"
-#include "hash/hash_table.hpp"
-#include "heap/heap.hpp"
-#include "cuckoo/cuckoo_filter.hpp"
+#include "../hash/hash_function.hpp"
+#include "../hash/hash_table.hpp"
+#include "../heap/heap.hpp"
+#include "../cuckoo/cuckoo_filter.hpp"
 
 class ObjectFactory {
 public:

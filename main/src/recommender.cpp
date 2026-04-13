@@ -1,4 +1,4 @@
-#include "recommender.hpp"
+#include "../include/recommender.hpp"
 #include "../include/rng/distributions/types/uniform_distribution.hpp"
 #include "../include/rng/distributions/types/normal_distribution.hpp"
 #include "../include/heap/algorithms/floyd.hpp"
@@ -29,8 +29,9 @@ void Recommender::generateData() {
         if (config.useCuckoo && cuckoo != nullptr) {
             if (cuckoo->query(key)) {
                 if (hashTable->hasRated(userId, itemId)) continue;
+            } else {
+                cuckoo->insert(key);
             }
-            cuckoo->insert(key);
         } else {
             if (hashTable->hasRated(userId, itemId)) continue;
         }

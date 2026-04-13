@@ -1,4 +1,5 @@
 recsys
+bench_*
 
 # Prerequisites
 *.d
