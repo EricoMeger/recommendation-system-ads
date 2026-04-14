@@ -1,11 +1,11 @@
-#include "factory/factory.hpp"
-#include "rng/engines/algorithms/acorn.hpp"
-#include "rng/engines/algorithms/xorshift.hpp"
-#include "hash/algorithms/fnv1a.hpp"
-#include "hash/algorithms/murmurhash.hpp"
-#include "hash/hash_table.hpp"
-#include "heap/algorithms/floyd.hpp"
-#include "cuckoo/cuckoo_filter.hpp"
+#include "../../include/factory/factory.hpp"
+#include "../../include/rng/engines/algorithms/acorn.hpp"
+#include "../../include/rng/engines/algorithms/xorshift.hpp"
+#include "../../include/hash/algorithms/fnv1a.hpp"
+#include "../../include/hash/algorithms/murmurhash.hpp"
+#include "../../include/hash/hash_table.hpp"
+#include "../../include/heap/algorithms/floyd.hpp"
+#include "../../include/cuckoo/cuckoo_filter.hpp"
 
 RNG* ObjectFactory::createEngine(const RecommenderConfig& config) {
     if(config.rngName == "xorshift") {
@@ -31,7 +31,7 @@ Heap* ObjectFactory::createHeap() {
 
 CuckooFilter* ObjectFactory::createCuckoo(const RecommenderConfig& config) {
     if(!config.useCuckoo) return nullptr;
-    return new CuckooFilter(new FNV1a(), new MurmurHash(0), config.numItems * 4, 4);
+    return new CuckooFilter(new FNV1a(), new MurmurHash(0), config.numRatings * 2, 4);
 }
 
 Recommender* ObjectFactory::create(const RecommenderConfig& config) {
