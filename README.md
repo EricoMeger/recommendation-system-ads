@@ -1,5 +1,11 @@
 # Recommendation System ADS
 
+TODO:
+- Xorshift with normal distribution generates only 1 star ratings in some cases (we need to identify in which cases this happens)
+- Improve the topK definition (give more weight to items that have a higher number of ratings even if their average rating is lower)
+- Rehashing in the hash function
+- Try to implement rehashing in the Cuckoo Filter or something equivalent like Dynamic Cuckoo Filter and run the benchmarks again to check for any improvement
+
 ## Integrantes do grupo
 - Érico Meger
 - Eros Henrique Lunardon Andrade
