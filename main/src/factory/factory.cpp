@@ -31,7 +31,7 @@ Heap* ObjectFactory::createHeap() {
 
 CuckooFilter* ObjectFactory::createCuckoo(const RecommenderConfig& config) {
     if(!config.useCuckoo) return nullptr;
-    return new CuckooFilter(new FNV1a(), new MurmurHash(0), config.numRatings * 2, 4);
+    return new CuckooFilter(new FNV1a(), new MurmurHash(67), config.numRatings * 8, 4);
 }
 
 Recommender* ObjectFactory::create(const RecommenderConfig& config) {
