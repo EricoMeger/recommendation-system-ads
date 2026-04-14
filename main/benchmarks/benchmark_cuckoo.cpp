@@ -86,9 +86,9 @@ void printResult(const std::string& label, const CuckooBenchResult& r) {
 int main() {
     const int SEED = 42;
     const std::vector<std::tuple<int,int,int>> configs = {
-        { 100,   50,   1000   },
-        { 1000,  500,  10000  },
-        { 10000, 5000, 100000 }
+        { 10000,    5000,    100000},
+        { 100000,   50000,   1000000},
+        { 500000,   75000,   5000000},
     };
 
     std::cout << "=== Benchmark Cuckoo Filter ===\n";

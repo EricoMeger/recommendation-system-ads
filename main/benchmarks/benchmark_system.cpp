@@ -30,12 +30,12 @@ SystemBenchResult benchSystem(const RecommenderConfig& config) {
 }
 
 int main() {
-    const int SEED = 42;
+    const int SEED = 67;
 
     const std::vector<std::tuple<int,int,int>> sizes = {
-        { 100,   50,   1000   },
-        { 1000,  500,  10000  },
-        { 10000, 5000, 100000 }
+        { 10000,    5000,    100000},
+        { 100000,   50000,   1000000},
+        { 500000,   75000,   5000000},
     };
 
     const std::vector<std::pair<std::string,std::string>> algos = {
