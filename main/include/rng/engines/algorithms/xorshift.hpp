@@ -9,4 +9,8 @@ public:
     uint64_t generate() override;
     void reset() override;
     std::string getName() const override { return "XORSHIFT"; }
+
+    double nextDouble() override {
+        return (double)(generate()) / (double)(UINT32_MAX);
+    }
 };
